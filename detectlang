@@ -1,0 +1,67 @@
+#!/bin/bash
+LC_ALL=C
+
+whatlang() {
+if [ $(/usr/bin/ls | grep -E '*\.c$|*\.h$' | wc -l) -gt 0 ]
+then
+  echo 'c'
+  exit 1
+elif [ $(/usr/bin/ls | grep -E 'CMakeLists\.txt$|CMakeCache\.txt$' | wc -l) -gt 0 ]
+then
+  echo 'cmake'
+  exit 1
+elif [ $(/usr/bin/ls | grep -E '*\.csproj$|*\.fsproj$|*\.xproj$|global\.json$|project\.json$|Directory\.Build\.props$|Directory\.Build\.targets$|Packages\.props$' | wc -l) -gt 0 ]
+then
+  echo 'dotnet'
+  exit 1
+elif [ $(/usr/bin/ls | grep -E 'mix\.exs$' | wc -l) -gt 0 ]
+then
+  echo 'elixir'
+  exit 1
+elif [ $(/usr/bin/ls | grep -E 'elm\.json$|elm-package\.json$|\.elm-version$|elm-stuff$' | wc -l) -gt 0 ]
+then
+  echo 'elm'
+  exit 1
+elif [ $(/usr/bin/ls | grep -E 'go\.mod$|go\.sum$|go\.work$|glide\.yaml$|Gopkg\.yaml$|Godeps$' | wc -l) -gt 0 ]
+then
+  echo 'golang'
+  exit 1
+elif [ $(/usr/bin/ls | grep -E '*\.hs$|*\.cabal$|*\.hs-boot$|stack\.yaml$|cabal\.project$' | wc -l) -gt 0 ]
+then
+  echo 'haskell'
+  exit 1
+elif [ $(/usr/bin/ls | grep -E '*\.java$|*\.class$|*\.gradle$|*\.jar$|*\.cljs$|*\.cljc$|pom\.xml$|build\.gradle\.kts$|build\.sbt$|\.java-version$|\.deps\.edn$|project\.clj$|build\.boot$' | wc -l) -gt 0 ]
+then
+  echo 'java'
+  exit 1
+elif [ $(/usr/bin/ls | grep -E '*\.jl$|Project\.toml$|Manifest\.toml$' | wc -l) -gt 0 ]
+then
+  echo 'julia'
+  exit 1
+elif [ $(/usr/bin/ls | grep -E '*\.js$|*\.mjs$|*\.cjs$|*\.ts$|*\.mts$|*\.cts$|package\.json$|\.node-version$|node-modules$' | wc -l) -gt 0 ]
+then
+  echo 'nodejs'
+  exit 1
+elif [ $(/usr/bin/ls | grep -E '*\.nim$|*\.nims$|*\.nimble$|nim\.cfg$' | wc -l) -gt 0 ]
+then
+  echo 'nim'
+  exit 1
+elif [ $(/usr/bin/ls | grep -E '*\.rs$|Cargo\.toml$' | wc -l) -gt 0 ]
+then
+  echo 'rust'
+  exit 1
+else
+  exit 0
+fi
+}
+
+haslang() {
+if [ $(/usr/bin/ls | grep -E '*\.c$|*\.h$|CMakeLists\.txt$|CMakeCache\.txt$|*\.csproj$|*\.fsproj$|*\.xproj$|global\.json$|project\.json$|Directory\.Build\.props$|Directory\.Build\.targets$|Packages\.props$|mix\.exs$|elm\.json$|elm-package\.json$|\.elm-version$|elm-stuff$|go\.mod$|go\.sum$|go\.work$|glide\.yaml$|Gopkg\.yaml$|Godeps$|*\.hs$|*\.cabal$|*\.hs-boot$|stack\.yaml$|cabal\.project$|*\.java$|*\.class$|*\.gradle$|*\.jar$|*\.cljs$|*\.cljc$|pom\.xml$|build\.gradle\.kts$|build\.sbt$|\.java-version$|\.deps\.edn$|project\.clj$|build\.boot$|*\.jl$|Project\.toml$|Manifest\.toml$|*\.js$|*\.mjs$|*\.cjs$|*\.ts$|*\.mts$|*\.cts$|package\.json$|\.node-version$|node-modules$|*\.nim$|*\.nims$|*\.nimble$|nim\.cfg$|*\.rs$|Cargo\.toml$' | wc -l) -eq 0 ]
+then
+  exit 0
+else
+  exit 1
+fi
+}
+
+"$@"

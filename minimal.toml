@@ -1,0 +1,171 @@
+add_newline = false
+command_timeout = 3000
+
+format = """
+[ ](bg:#7ECA9C fg:#1E222A)\
+${custom.linux}\
+${custom.windows}\
+${custom.macos}\
+$c\
+$cmake\
+$dotnet\
+$elixir\
+$elm\
+$golang\
+$haskell\
+$java\
+$julia\
+$nodejs\
+$nim\
+$rust\
+[](bg:#1E222A fg:#6FD08B)\
+$git_branch\
+$git_status\
+$directory\
+$status\
+[ ](fg:#1E222A)\
+"""
+
+[directory]
+style = "bg:#1E222A fg:#ABB2BF"
+format = "[ $path ]($style)"
+truncation_length = 2
+truncation_symbol = " "
+
+[directory.substitutions]
+"Documents" = ""
+"Downloads" = ""
+"Music" = ""
+"Pictures" = ""
+"Trash" = ""
+"Desktop" = ""
+"Videos" = ""
+"Templates" = ""
+".config" = ""
+".cache" = ""
+"~" = ""
+
+[custom.linux]
+os = 'linux'
+when = """
+$HOME/.config/starship/detectlang haslang
+"""
+command = """
+$HOME/.config/starship/detectdistro
+"""
+style = "bg:#7ECA9C fg:#1E222A"
+format = "[$output ]($style)"
+
+[custom.macos]
+os = "macos"
+symbol = " "
+style = "bg:#7ECA9C fg:#1E222A"
+format = "[$symbol]($style)"
+
+[custom.windows]
+os = 'windows'
+symbol = " "
+style = "bg:#7ECA9C fg:#1E222A"
+format = "[$symbol]($style)"
+
+[cmd_duration]
+style = "bg:#CAAA6A fg:#1E222A"
+
+[c]
+symbol = " "
+style = "bg:#7ECA9C fg:#1E222A"
+format = "[$symbol]($style)"
+
+[cmake]
+symbol = " "
+style = "bg:#7ECA9C fg:#1E222A"
+format = "[$symbol]($style)"
+
+[dotnet]
+symbol = " "
+style = "bg:#7ECA9C fg:#1E222A"
+format = "[$symbol]($style)"
+
+[elixir]
+symbol = " "
+style = "bg:#7ECA9C fg:#1E222A"
+format = "[$symbol]($style)"
+
+[elm]
+symbol = " "
+style = "bg:#7ECA9C fg:#1E222A"
+format = "[$symbol]($style)"
+
+[git_branch]
+symbol = " "
+style = "bg:#7AA2F7 fg:#1E222A"
+format = """
+[ ](bg:#1E222A fg:#ABB2BF)\
+[](bg:#7AA2F7 fg:#1E222A)\
+[ $symbol$branch ]($style)\
+[ ](bg:#5E8CEF fg:#7AA2F7)\
+"""
+
+[git_status]
+style = "bg:#5E8CEF fg:#1E222A"
+format = """
+[$all_status$ahead_behind]($style)\
+[](bg:#1E222A fg:#5E8CEF)\
+"""
+modified = " "
+conflicted = " "
+ahead = " "
+behind = " "
+diverged = " "
+up_to_date = " "
+untracked = " "
+stashed = " "
+renamed = " "
+deleted = " "
+staged = " "
+
+[golang]
+symbol = " "
+style = "bg:#7ECA9C fg:#1E222A"
+
+[haskell]
+symbol = " "
+style = "bg:#7ECA9C fg:#1E222A"
+format = "[$symbol]($style)"
+
+[java]
+symbol = " "
+style = "bg:#7ECA9C fg:#1E222A"
+format = "[$symbol]($style)"
+
+[julia]
+symbol = " "
+style = "bg:#7ECA9C fg:#1E222A"
+format = "[$symbol]($style)"
+
+[nodejs]
+symbol = " "
+style = "bg:#7ECA9C fg:#1E222A"
+format = "[$symbol]($style)"
+
+[nim]
+symbol = " "
+style = "bg:#7ECA9C fg:#1E222A"
+format = "[$symbol]($style)"
+
+[rust]
+symbol = " "
+style = "bg:#7ECA9C fg:#1E222A"
+format = "[$symbol]($style)"
+
+[status]
+disabled = false
+style = "bg:#1E222A fg:#ABB2BF"
+format = "[$symbol]($style)"
+symbol = "[](bg:#1E222A fg:#E06C75) "
+success_symbol = ""
+not_executable_symbol = "[](bg:#1E222A fg:#E06C75) "
+not_found_symbol = "[](bg:#1E222A fg:#CAAA6A) "
+sigint_symbol = "[](bg:#1E222A fg:#E06C75) "
+signal_symbol = "[](bg:#1E222A fg:#E06C75) "
+map_symbol = true

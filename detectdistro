@@ -1,0 +1,22 @@
+#!/bin/bash
+
+if [ -f "/etc/os-release" ]
+then
+  RELEASE=$(cat /etc/os-release | head -n 1 | cut -d "=" -f 2 | tr "[:upper:]" "[:lower:]" | tr -d '\"')
+elif [ -x "$( command -v hostnamectl )" ]
+then
+  RELEASE=$(hostnamectl | grep "Operating System" | cut -d ":" -f 2 | sed 's/^[[:space:]]*//' | tr "[:upper:]" "[:lower:]")
+fi
+
+  if [ -z "$RELEASE" ]; then echo ' '; exit; fi
+  if [[ ${RELEASE} == *"arch"* ]]; then echo ' '; exit; fi
+  if [[ ${RELEASE} == *"manjaro"* ]]; then echo ' '; exit; fi
+  if [[ ${RELEASE} == *"centos"* ]]; then echo ' '; exit; fi
+  if [[ ${RELEASE} == *"fedora"* ]]; then echo ' '; exit; fi
+  if [[ ${RELEASE} == *"rhel"* ]]; then echo ' '; exit; fi
+  if [[ ${RELEASE} == *"ubuntu"* ]]; then echo ' '; exit; fi
+  if [[ ${RELEASE} == *"mint"* ]]; then echo ' '; exit; fi
+  if [[ ${RELEASE} == *"gentoo"* ]]; then echo ' '; exit; fi
+  if [[ ${RELEASE} == *"debian"* ]]; then echo ' '; exit; fi
+  if [[ ${RELEASE} == *"opensuse"* ]]; then echo ' '; exit; fi
+  if [[ ${RELEASE} == *"nixos"* ]]; then echo ' '; exit; fi
