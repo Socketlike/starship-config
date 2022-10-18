@@ -48,7 +48,7 @@ truncation_symbol = " "
 [custom.linux]
 os = 'linux'
 when = """
-$HOME/.config/starship/detectlang haslang
+$HOME/.config/starship/detectlang nolang
 """
 command = """
 $HOME/.config/starship/detectdistro
