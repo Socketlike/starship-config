@@ -55,8 +55,18 @@ int gethighest(int arr[])
    return b;
 }
 
-int detectlang(const char* str)
-{
+int detectlang(const char* str, const int isDir)
+{   
+    if (isDir == 1) {
+        if (cmpstr(str, "elm-stuff"))
+            return 5;
+        else if (cmpstr(str, "Godeps"))
+            return 6;
+        else if (cmpstr(str, "node_modules"))
+            return 10;
+        else return 0;
+    }
+
     if (
         endswith(str, ".c") ||
         endswith(str, ".h")
@@ -83,16 +93,14 @@ int detectlang(const char* str)
     else if (
         cmpstr(str, "elm.json") ||
         cmpstr(str, "elm-package.json") ||
-        cmpstr(str, ".elm-version") ||
-        cmpstr(str, "elm-stuff")
+        cmpstr(str, ".elm-version")
        )
         return 5; // elm
     else if (
         cmpstr(str, "go.mod") ||
         cmpstr(str, "go.work") ||
         cmpstr(str, "glide.yaml") ||
-        cmpstr(str, "Gopkg.yaml") ||
-        cmpstr(str, "Godeps")
+        cmpstr(str, "Gopkg.yaml")
        )
         return 6; // go
     else if (
@@ -132,8 +140,7 @@ int detectlang(const char* str)
         endswith(str, ".mts") ||
         endswith(str, ".cts") ||
         cmpstr(str, "package.json") ||
-        cmpstr(str, ".node-version") ||
-        cmpstr(str, "node_modules")
+        cmpstr(str, ".node-version")
        )
         return 10; // nodejs
     else if (
@@ -172,29 +179,54 @@ void whatlang()
     int languages[12];
     
     while ((ent = readdir(dir)) != NULL) {
-        switch (detectlang(ent->d_name)) {
-            case 0: break;
-            case 1: languages[0]++; break;
-            case 2: languages[1]++; break;
-            case 3: languages[2]++; break;
-            case 4: languages[3]++; break;
-            case 5: languages[4]++; break;
-            case 6: languages[5]++; break;
-            case 7: languages[6]++; break;
-            case 8: languages[7]++; break;
-            case 9: languages[8]++; break;
-            case 10: languages[9]++; break;
-            case 11: languages[10]++; break;
-            case 12: languages[11]++; break;
+        switch (ent->d_type) {
+            case DT_DIR: {
+                switch (detectlang(ent->d_name, 1)) {
+                    case 0: break;
+                    case 1: languages[0]++; break;
+                    case 2: languages[1]++; break;
+                    case 3: languages[2]++; break;
+                    case 4: languages[3]++; break;
+                    case 5: languages[4]++; break;
+                    case 6: languages[5]++; break;
+                    case 7: languages[6]++; break;
+                    case 8: languages[7]++; break;
+                    case 9: languages[8]++; break;
+                    case 10: languages[9]++; break;
+                    case 11: languages[10]++; break;
+                    case 12: languages[11]++; break;
+                    default: break;
+                }
+                break;
+            }
+            case DT_LNK:
+            case DT_REG: {
+                switch (detectlang(ent->d_name, 0)) {
+                    case 0: break;
+                    case 1: languages[0]++; break;
+                    case 2: languages[1]++; break;
+                    case 3: languages[2]++; break;
+                    case 4: languages[3]++; break;
+                    case 5: languages[4]++; break;
+                    case 6: languages[5]++; break;
+                    case 7: languages[6]++; break;
+                    case 8: languages[7]++; break;
+                    case 9: languages[8]++; break;
+                    case 10: languages[9]++; break;
+                    case 11: languages[10]++; break;
+                    case 12: languages[11]++; break;
+                    default: break;
+                }
+                break;
+            }
             default: break;
         }
     }
 
     closedir(dir);
 
-    if (!languages[gethighest(languages)]) {
+    if (!languages[gethighest(languages)])
         exit(0);
-    }
 
     switch (gethighest(languages)) {
       case 0: printf("c\n"); break;
@@ -224,8 +256,20 @@ void haslang()
     
     while ((ent = readdir(dir)) != NULL) {
         if (lang) break;
-        if (detectlang(ent->d_name))
-            lang = 1;
+        switch (ent->d_type) {
+            case DT_DIR: {
+                if (detectlang(ent->d_name, 1))
+                    lang = 1;
+                break;
+            }
+            case DT_LNK:
+            case DT_REG: {
+                if (detectlang(ent->d_name, 0))
+                    lang = 1;
+                break;
+            }
+            default: break;
+        }
     }
 
     closedir(dir);
@@ -245,8 +289,20 @@ void nolang()
     
     while ((ent = readdir(dir)) != NULL) {
         if (lang) break;
-        if (detectlang(ent->d_name))
-            lang = 1;
+        switch (ent->d_type) {
+            case DT_DIR: {
+                if (detectlang(ent->d_name, 1))
+                    lang = 1;
+                break;
+            }
+            case DT_LNK:
+            case DT_REG: {
+                if (detectlang(ent->d_name, 0))
+                    lang = 1;
+                break;
+            }
+            default: break;
+        }
     }
 
     closedir(dir);
