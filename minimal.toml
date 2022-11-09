@@ -8,6 +8,8 @@ ${custom.windows}\
 ${custom.macos}\
 $c\
 $cmake\
+$crystal\
+$dart\
 $dotnet\
 $elixir\
 $elm\
@@ -15,9 +17,13 @@ $golang\
 $haskell\
 $java\
 $julia\
+$kotlin\
+$lua\
 $nodejs\
+$perl\
 $nim\
 $rust\
+$ruby\
 [](bg:#1E222A fg:#6FD08B)\
 $git_branch\
 $git_status\
@@ -29,6 +35,7 @@ $status\
 [directory]
 style = "bg:#1E222A fg:#ABB2BF"
 format = "[ $path ]($style)"
+read_only = " "
 truncation_length = 2
 truncation_symbol = " "
 
@@ -39,7 +46,7 @@ truncation_symbol = " "
 "Pictures" = ""
 "Trash" = ""
 "Desktop" = ""
-"Videos" = ""
+"Videos" = ""
 "Templates" = ""
 ".config" = ""
 ".cache" = ""
@@ -78,6 +85,16 @@ format = "[$symbol]($style)"
 
 [cmake]
 symbol = " "
+style = "bg:#7ECA9C fg:#1E222A"
+format = "[$symbol]($style)"
+
+[crystal]
+symbol = " "
+style = "bg:#7ECA9C fg:#1E222A"
+format = "[$symbol]($style)"
+
+[dart]
+symbol = " "
 style = "bg:#7ECA9C fg:#1E222A"
 format = "[$symbol]($style)"
 
@@ -143,8 +160,28 @@ symbol = " "
 style = "bg:#7ECA9C fg:#1E222A"
 format = "[$symbol]($style)"
 
+[kotlin]
+symbol = " "
+style = "bg:#7ECA9C fg:#1E222A"
+format = "[$symbol]($style)"
+
+[lua]
+symbol = " "
+style = "bg:#7ECA9C fg:#1E222A"
+format = "[$symbol]($style)"
+
 [nodejs]
 symbol = " "
+style = "bg:#7ECA9C fg:#1E222A"
+format = "[$symbol]($style)"
+
+[perl]
+symbol = " "
+style = "bg:#7ECA9C fg:#1E222A"
+format = "[$symbol]($style)"
+
+[python]
+symbol = " "
 style = "bg:#7ECA9C fg:#1E222A"
 format = "[$symbol]($style)"
 
@@ -155,6 +192,11 @@ format = "[$symbol]($style)"
 
 [rust]
 symbol = " "
+style = "bg:#7ECA9C fg:#1E222A"
+format = "[$symbol]($style)"
+
+[ruby]
+symbol = " "
 style = "bg:#7ECA9C fg:#1E222A"
 format = "[$symbol]($style)"
 
