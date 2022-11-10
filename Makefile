@@ -1,8 +1,17 @@
-CC = clang
-CC_FLAGS = -O2 -v
-OUTPUT = detectlang
+SHELL = /bin/bash
 
-make:
-	@echo "Checking for source file"
-	@if [ ! -f "detectlang.c" ]; then echo "Source file does not exist."; exit 1; else echo "Source file exists"; fi;
-	@${CC} ${CC_FLAGS} detectlang.c -o ${OUTPUT}
+CC = clang
+CXX = clang++
+
+CCFLAGS = -O2
+CXXFLAGS = -O2
+
+DETECTLANG_SRC = ./src/detectlang.c ./src/config.h
+DETECTDISTRO_SRC = ./src/detectdistro.cpp ./src/popen.h
+
+all: detectlang detectdistro
+
+detectlang: $(DETECTLANG_SRC)
+	cd ./src && $(CC) $(CCFLAGS) detectlang.c -o ../detectlang
+detectdistro: $(DETECTDISTRO_SRC)
+	cd ./src && $(CXX) $(CXXFLAGS) detectdistro.cpp -o ../detectdistro
