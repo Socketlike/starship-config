@@ -144,6 +144,7 @@ staged = " "
 [golang]
 symbol = " "
 style = "bg:#7ECA9C fg:#1E222A"
+format = "[$symbol]($style)"
 
 [haskell]
 symbol = " "
