@@ -1,0 +1,106 @@
+## Linux Configuration, Fast
+# Okay, what are the differences between "Fast" and "Standard"?
+#   "Standard" uses normal Starship language detection.
+#   This has a side effect of triggering (languagebinary) (--version|-v) yadayadayada
+#   The "Fast" version does not have that trigger, removing the version check, making it "faster" since
+#   the version string received from Starship is left unused anyways.
+##
+
+add_newline = false
+command_timeout = 3000
+
+format = """
+[ ](bg:#7ECA9C fg:#1E222A)\
+${custom.linux}\
+${custom.language}\
+[](bg:#1E222A fg:#6FD08B)\
+$git_branch\
+$git_status\
+$directory\
+$status\
+[ ](fg:#1E222A)\
+"""
+
+[directory]
+style = "bg:#1E222A fg:#ABB2BF"
+format = "[ $path ]($style)"
+read_only = " "
+truncation_length = 2
+truncation_symbol = "  "
+
+[directory.substitutions]
+"Documents" = ""
+"Downloads" = ""
+"Music" = ""
+"Pictures" = ""
+"Trash" = ""
+"Desktop" = ""
+"Videos" = ""
+"Templates" = ""
+".config" = ""
+".cache" = ""
+"~" = ""
+
+[cmd_duration]
+style = "bg:#CAAA6A fg:#1E222A"
+
+[custom.linux]
+os = 'linux'
+when = """
+$HOME/.config/starship/detectlang no
+"""
+command = """
+$HOME/.config/starship/detectdistro
+"""
+style = "bg:#7ECA9C fg:#1E222A"
+format = "[$output ]($style)"
+
+[custom.language]
+when = """
+$HOME/.config/starship/detectlang has
+"""
+command = """
+$HOME/.config/starship/detectlang symbols
+"""
+style = "bg:#7ECA9C fg:#1E222A"
+format = "[$output ]($style)"
+
+[git_branch]
+symbol = " "
+style = "bg:#61afef fg:#1E222A"
+format = """
+[ ](bg:#1E222A fg:#ABB2BF)\
+[](bg:#61afef fg:#1E222A)\
+[  $symbol$branch ]($style)\
+[ ](bg:#668ee3 fg:#61afef)\
+"""
+
+[git_status]
+style = "bg:#668ee3 fg:#1E222A"
+format = """
+[ $all_status$ahead_behind]($style)\
+[](bg:#1E222A fg:#668ee3)\
+"""
+modified = " "
+conflicted = " "
+ahead = " "
+behind = " "
+diverged = " "
+up_to_date = " "
+untracked = " "
+stashed = " "
+renamed = " "
+deleted = " "
+staged = " "
+
+[status]
+disabled = false
+style = "bg:#1E222A fg:#ABB2BF"
+format = "[$symbol]($style)"
+symbol = "[](bg:#1E222A fg:#E06C75) "
+success_symbol = ""
+not_executable_symbol = "[](bg:#1E222A fg:#E06C75) "
+not_found_symbol = "[](bg:#1E222A fg:#CAAA6A) "
+sigint_symbol = "[](bg:#1E222A fg:#E06C75) "
+signal_symbol = "[](bg:#1E222A fg:#E06C75) "
+map_symbol = true

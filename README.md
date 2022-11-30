@@ -14,14 +14,19 @@
 - Clone the repository
   
   ```bash
-  git clone https://github.com/Abstructor/starship-config
+  git clone https://github.com/Socketlike/starship-config
   ```
-- Copy `minimal.toml` (+ `detectdistro` and `detectlang` if you use Linux) to...
-  - `/home/(username)/.config/starship` (Linux & MacOS)
-  - `C:/Users/(username)/starship` (Windows)
-- Set the STARSHIP_CONFIG environment variable to...
-  - `/home/(username)/.config/starship/minimal.toml` (Linux & MacOS)
-  - `C:/Users/(username)/starship/minimal.toml` (Windows)
+- Linux:
+  - Execute `make curved` or `make powerline` or `make sharp`
+  - Edit your shell's rc script and set the `STARSHIP_CONFIG` variable to
+    `$HOME/.config/starship/linux-std.toml` or  
+    `$HOME/.config/starship/linux-fast.toml`.
+- Windows:
+  - Copy `windows-std.toml` to `C:\Users\(your user)\starship\`
+  - Set the `STARSHIP_CONFIG` environment variable to `C:\Users\(your user)\starship\windows-std.toml`
+- MacOS:
+  - Copy `macos-std.toml` to `$HOME/starship`
+  - Set the `STARSHIP_CONFIG` environment variable to `$HOME/starship/macos-std.toml`
 
 ## Miscellaneous
 You should disable Starship for TTYs if you're on Linux by replacing

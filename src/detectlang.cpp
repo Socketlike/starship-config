@@ -2,7 +2,6 @@
 #include <regex>
 #include <string>
 #include <filesystem>
-#include <any>
 #include "config.h"
 using std::regex_match, std::regex, std::string;
 namespace fs = std::filesystem;
@@ -83,7 +82,22 @@ string what() {
     for (int i = 0; i < ids.size(); i++) {
       if (i > 0)
         parsed = parsed + string(", ");
-      parsed = parsed + languages[ids[i]].name;
+      parsed = parsed.append(languages[ids[i]].name);
+    }
+
+  return parsed;
+}
+
+string symbols() {
+  scanCwd();
+  const vector<int> ids = getAvailables();
+  string parsed = "";
+
+  if (ids.size() == 0)
+    exit(1);
+  else
+    for (int i = 0; i < ids.size(); i++) {
+      parsed = parsed.append(languages[ids[i]].symbol);
     }
 
   return parsed;
@@ -113,16 +127,20 @@ int main(int argc, char* argv[]) {
     cout << "  what            shows the most dominant language in current working directory\n";
     cout << "  has             exits with 1 if no files found, otherwise 0\n";
     cout << "  no              exits with 0 if no files found, otherwise 1\n";
+    cout << "  symbols         shows symbols of respective languages in cwd\n";
   } else if (streql(argv[1], "what")) {
     cout << what() << '\n';
   } else if (streql(argv[1], "has")) {
     has();
   } else if (streql(argv[1], "no")) {
     no();
+  } else if (streql(argv[1], "symbols")) {
+    cout << symbols();
   } else {
     cout << "Usage: " + string(argv[0]) + " [OPTION]\n\n";
     cout << "  what            shows the most dominant language in current working directory\n";
     cout << "  has             exits with 1 if no files found, otherwise 0\n";
     cout << "  no              exits with 0 if no files found, otherwise 1\n";
+    cout << "  symbols         shows symbols of respective languages in cwd\n";
   }
 }

@@ -1,10 +1,15 @@
+## MacOS Configuration, Standard
+# Why does the OS symbols on these versions not disappear like the Linux version when there is a language
+# file in the cwd?
+# > The "OS symbol disappearing" is controlled by the "detectlang" binary.
+#   Since I do not have a Windows/MacOS machine to test the built binaries for these OSes I cannot distribute them.
+##
+
 add_newline = false
 command_timeout = 3000
 
 format = """
 [ ](bg:#7ECA9C fg:#1E222A)\
-${custom.linux}\
-${custom.windows}\
 ${custom.macos}\
 $c\
 $cmake\
@@ -52,26 +57,9 @@ truncation_symbol = " "
 ".cache" = ""
 "~" = ""
 
-[custom.linux]
-os = 'linux'
-when = """
-$HOME/.config/starship/detectlang no
-"""
-command = """
-$HOME/.config/starship/detectdistro
-"""
-style = "bg:#7ECA9C fg:#1E222A"
-format = "[$output ]($style)"
-
 [custom.macos]
 os = "macos"
 symbol = " "
-style = "bg:#7ECA9C fg:#1E222A"
-format = "[$symbol]($style)"
-
-[custom.windows]
-os = 'windows'
-symbol = " "
 style = "bg:#7ECA9C fg:#1E222A"
 format = "[$symbol]($style)"
 
@@ -115,19 +103,19 @@ format = "[$symbol]($style)"
 
 [git_branch]
 symbol = " "
-style = "bg:#7AA2F7 fg:#1E222A"
+style = "bg:#61afef fg:#1E222A"
 format = """
 [ ](bg:#1E222A fg:#ABB2BF)\
-[](bg:#7AA2F7 fg:#1E222A)\
+[](bg:#61afef fg:#1E222A)\
 [ $symbol$branch ]($style)\
-[ ](bg:#5E8CEF fg:#7AA2F7)\
+[ ](bg:#668ee3 fg:#61afef)\
 """
 
 [git_status]
-style = "bg:#5E8CEF fg:#1E222A"
+style = "bg:#668ee3 fg:#1E222A"
 format = """
 [$all_status$ahead_behind]($style)\
-[](bg:#1E222A fg:#5E8CEF)\
+[](bg:#1E222A fg:#668ee3)\
 """
 modified = " "
 conflicted = " "

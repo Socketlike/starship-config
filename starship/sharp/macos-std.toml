@@ -1,0 +1,202 @@
+## MacOS Configuration, Standard
+# Why does the OS symbols on these versions not disappear like the Linux version when there is a language
+# file in the cwd?
+# > The "OS symbol disappearing" is controlled by the "detectlang" binary.
+#   Since I do not have a Windows/MacOS machine to test the built binaries for these OSes I cannot distribute them.
+##
+
+add_newline = false
+command_timeout = 3000
+
+format = """
+[ ](bg:#7ECA9C fg:#1E222A)\
+${custom.macos}\
+$c\
+$cmake\
+$crystal\
+$dart\
+$dotnet\
+$elixir\
+$elm\
+$golang\
+$haskell\
+$java\
+$julia\
+$kotlin\
+$lua\
+$nodejs\
+$perl\
+$nim\
+$rust\
+$ruby\
+[](bg:#1E222A fg:#6FD08B)\
+$git_branch\
+$git_status\
+$directory\
+$status\
+[ ](fg:#1E222A)\
+"""
+
+[directory]
+style = "bg:#1E222A fg:#ABB2BF"
+format = "[ $path ]($style)"
+read_only = " "
+truncation_length = 2
+truncation_symbol = "  "
+
+[directory.substitutions]
+"Documents" = ""
+"Downloads" = ""
+"Music" = ""
+"Pictures" = ""
+"Trash" = ""
+"Desktop" = ""
+"Videos" = ""
+"Templates" = ""
+".config" = ""
+".cache" = ""
+"~" = ""
+
+[custom.macos]
+os = "macos"
+symbol = " "
+style = "bg:#7ECA9C fg:#1E222A"
+format = "[$symbol]($style)"
+
+[cmd_duration]
+style = "bg:#CAAA6A fg:#1E222A"
+
+[c]
+symbol = " "
+style = "bg:#7ECA9C fg:#1E222A"
+format = "[$symbol]($style)"
+
+[cmake]
+symbol = " "
+style = "bg:#7ECA9C fg:#1E222A"
+format = "[$symbol]($style)"
+
+[crystal]
+symbol = " "
+style = "bg:#7ECA9C fg:#1E222A"
+format = "[$symbol]($style)"
+
+[dart]
+symbol = " "
+style = "bg:#7ECA9C fg:#1E222A"
+format = "[$symbol]($style)"
+
+[dotnet]
+symbol = " "
+style = "bg:#7ECA9C fg:#1E222A"
+format = "[$symbol]($style)"
+
+[elixir]
+symbol = " "
+style = "bg:#7ECA9C fg:#1E222A"
+format = "[$symbol]($style)"
+
+[elm]
+symbol = " "
+style = "bg:#7ECA9C fg:#1E222A"
+format = "[$symbol]($style)"
+
+[git_branch]
+symbol = " "
+style = "bg:#61afef fg:#1E222A"
+format = """
+[ ](bg:#1E222A fg:#ABB2BF)\
+[](bg:#61afef fg:#1E222A)\
+[  $symbol$branch ]($style)\
+[ ](bg:#668ee3 fg:#61afef)\
+"""
+
+[git_status]
+style = "bg:#668ee3 fg:#1E222A"
+format = """
+[ $all_status$ahead_behind]($style)\
+[](bg:#1E222A fg:#668ee3)\
+"""
+modified = " "
+conflicted = " "
+ahead = " "
+behind = " "
+diverged = " "
+up_to_date = " "
+untracked = " "
+stashed = " "
+renamed = " "
+deleted = " "
+staged = " "
+
+[golang]
+symbol = " "
+style = "bg:#7ECA9C fg:#1E222A"
+format = "[$symbol]($style)"
+
+[haskell]
+symbol = " "
+style = "bg:#7ECA9C fg:#1E222A"
+format = "[$symbol]($style)"
+
+[java]
+symbol = " "
+style = "bg:#7ECA9C fg:#1E222A"
+format = "[$symbol]($style)"
+
+[julia]
+symbol = " "
+style = "bg:#7ECA9C fg:#1E222A"
+format = "[$symbol]($style)"
+
+[kotlin]
+symbol = " "
+style = "bg:#7ECA9C fg:#1E222A"
+format = "[$symbol]($style)"
+
+[lua]
+symbol = " "
+style = "bg:#7ECA9C fg:#1E222A"
+format = "[$symbol]($style)"
+
+[nodejs]
+symbol = " "
+style = "bg:#7ECA9C fg:#1E222A"
+format = "[$symbol]($style)"
+
+[perl]
+symbol = " "
+style = "bg:#7ECA9C fg:#1E222A"
+format = "[$symbol]($style)"
+
+[python]
+symbol = " "
+style = "bg:#7ECA9C fg:#1E222A"
+format = "[$symbol]($style)"
+
+[nim]
+symbol = " "
+style = "bg:#7ECA9C fg:#1E222A"
+format = "[$symbol]($style)"
+
+[rust]
+symbol = " "
+style = "bg:#7ECA9C fg:#1E222A"
+format = "[$symbol]($style)"
+
+[ruby]
+symbol = " "
+style = "bg:#7ECA9C fg:#1E222A"
+format = "[$symbol]($style)"
+
+[status]
+disabled = false
+style = "bg:#1E222A fg:#ABB2BF"
+format = "[$symbol]($style)"
+symbol = "[](bg:#1E222A fg:#E06C75) "
+success_symbol = ""
+not_executable_symbol = "[](bg:#1E222A fg:#E06C75) "
+not_found_symbol = "[](bg:#1E222A fg:#CAAA6A) "
+sigint_symbol = "[](bg:#1E222A fg:#E06C75) "
+signal_symbol = "[](bg:#1E222A fg:#E06C75) "
+map_symbol = true

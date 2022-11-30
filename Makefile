@@ -12,8 +12,12 @@ detectlang: $(DETECTLANG_SRC)
 	cd ./src && $(CXX) $(CXXFLAGS) detectlang.cpp -o ../detectlang
 detectdistro: $(DETECTDISTRO_SRC)
 	cd ./src && $(CXX) $(CXXFLAGS) detectdistro.cpp -o ../detectdistro
-configcheck:
-	if [ "$(STARSHIP_CONFIG)" != "/home/$(USER)/.config/starship/minimal.toml" ]; then echo "export STARSHIP_CONFIG=\"$(HOME)/.config/starship/minimal.toml\"" >> $(HOME)/.bashrc; fi 
-install: detectlang detectdistro minimal.toml configcheck
+curved: detectlang detectdistro
 	mkdir -p $(HOME)/.config/starship
-	cp {detect{distro,lang},minimal.toml} $(HOME)/.config/starship
+	cp {detect{distro,lang},starship/curved/linux-*.toml} $(HOME)/.config/starship
+powerline: detectlang detectdistro
+	mkdir -p $(HOME)/.config/starship
+	cp {detect{distro,lang},starship/powerline/linux-*.toml} $(HOME)/.config/starship
+sharp: detectlang detectdistro
+	mkdir -p $(HOME)/.config/starship
+	cp {detect{distro,lang},starship/sharp/linux-*.toml} $(HOME)/.config/starship
