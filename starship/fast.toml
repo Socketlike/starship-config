@@ -60,7 +60,7 @@ style = "bg:#7ECA9C fg:#1E222A"
 format = "[$output ]($style)"
 
 [git_branch]
-symbol = " "
+symbol = " "
 style = "bg:#61afef fg:#1E222A"
 format = """
 [ ](bg:#1E222A fg:#ABB2BF)\

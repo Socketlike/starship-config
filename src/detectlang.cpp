@@ -2,7 +2,7 @@
 #include <regex>
 #include <string>
 #include <filesystem>
-#include "config.h"
+#include "config.hpp"
 using std::regex_match, std::regex, std::string;
 namespace fs = std::filesystem;
 
