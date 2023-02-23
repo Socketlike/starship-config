@@ -32,23 +32,25 @@ $status\
 
 [directory]
 style = "bg:#1E222A fg:#ABB2BF"
-format = "[ $path ]($style)"
-read_only = " "
+format = "[ $path ]($style)[$read_only]($read_only_style)"
+read_only = ""
+read_only_style = "bg:#1E222A fg:#E06C75"
 truncation_length = 2
 truncation_symbol = " "
 
 [directory.substitutions]
 "Documents" = ""
-"Downloads" = ""
-"Music" = ""
-"Pictures" = ""
-"Trash" = ""
-"Desktop" = ""
-"Videos" = ""
+"Downloads" = ""
+"Music" = ""
+"Pictures" = ""
+"Trash" = ""
+"Desktop" = ""
+"Videos" = ""
 "Templates" = ""
-".config" = ""
+".config" = ""
 ".cache" = ""
-"~" = ""
+"home" = ""
+"~" = ""
 
 [custom.linux]
 os = 'linux'
@@ -113,19 +115,19 @@ format = """
 style = "bg:#668ee3 fg:#1E222A"
 format = """
 [$all_status$ahead_behind]($style)\
-[](bg:#1E222A fg:#668ee3)\
+[{!CHAR_DIVIDER!}](bg:#1E222A fg:#668ee3)\
 """
-modified = " "
-conflicted = " "
-ahead = " "
-behind = " "
-diverged = " "
-up_to_date = " "
-untracked = " "
-stashed = " "
-renamed = " "
-deleted = " "
-staged = " "
+modified = " "
+conflicted = " "
+ahead = " "
+behind = " "
+diverged = " "
+up_to_date = " "
+untracked = " "
+stashed = " "
+renamed = " "
+deleted = " "
+staged = " "
 
 [golang]
 symbol = " "
@@ -191,10 +193,10 @@ format = "[$symbol]($style)"
 disabled = false
 style = "bg:#1E222A fg:#ABB2BF"
 format = "[$symbol]($style)"
-symbol = "[](bg:#1E222A fg:#E06C75) "
+symbol = "[](bg:#1E222A fg:#E06C75) "
 success_symbol = ""
-not_executable_symbol = "[](bg:#1E222A fg:#E06C75) "
+not_executable_symbol = "[](bg:#1E222A fg:#E06C75) "
 not_found_symbol = "[](bg:#1E222A fg:#CAAA6A) "
-sigint_symbol = "[](bg:#1E222A fg:#E06C75) "
-signal_symbol = "[](bg:#1E222A fg:#E06C75) "
+sigint_symbol = "[](bg:#1E222A fg:#E06C75) "
+signal_symbol = "[](bg:#1E222A fg:#E06C75) "
 map_symbol = true
