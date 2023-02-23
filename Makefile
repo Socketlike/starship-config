@@ -8,16 +8,27 @@ DETECTDISTRO_SRC = ./src/detectdistro.cpp ./src/popen.h
 
 all: detectlang detectdistro
 
-detectlang: $(DETECTLANG_SRC)
-	cd ./src && $(CXX) $(CXXFLAGS) detectlang.cpp -o ../detectlang
-detectdistro: $(DETECTDISTRO_SRC)
-	cd ./src && $(CXX) $(CXXFLAGS) detectdistro.cpp -o ../detectdistro
+builddir:
+	mkdir -p ./build
+detectlang: builddir $(DETECTLANG_SRC)
+	$(CXX) $(CXXFLAGS) src/detectlang.cpp -o build/detectlang
+detectdistro: builddir $(DETECTDISTRO_SRC)
+	$(CXX) $(CXXFLAGS) src/detectdistro.cpp -o build/detectdistro
 curved: detectlang detectdistro
+	cp ./starship/*.toml ./build
+	sed -i 's/{!CHAR_DIVIDER!}//g' ./build/*.toml
 	mkdir -p $(HOME)/.config/starship
-	cp {detect{distro,lang},starship/curved/linux-*.toml} $(HOME)/.config/starship
+	cp ./build/{detect{distro,lang},*.toml} $(HOME)/.config/starship
+	@echo -e "\nDone. Don't forget to edit your shell's rc script and set the STARSHIP_CONFIG variable to\n\n$(HOME)/.config/starship/fast.toml\n\nor\n\n$(HOME)/.config/starship/std.toml."
 powerline: detectlang detectdistro
+	cp ./starship/*.toml ./build
+	sed -i 's/{!CHAR_DIVIDER!}//g' ./build/*.toml
 	mkdir -p $(HOME)/.config/starship
-	cp {detect{distro,lang},starship/powerline/linux-*.toml} $(HOME)/.config/starship
+	cp ./build/{detect{distro,lang},*.toml} $(HOME)/.config/starship
+	@echo -e "\nDone. Don't forget to edit your shell's rc script and set the STARSHIP_CONFIG variable to\n\n$(HOME)/.config/starship/fast.toml\n\nor\n\n$(HOME)/.config/starship/std.toml."
 sharp: detectlang detectdistro
+	cp ./starship/*.toml ./build
+	sed -i 's/{!CHAR_DIVIDER!}//g' ./build/*.toml
 	mkdir -p $(HOME)/.config/starship
-	cp {detect{distro,lang},starship/sharp/linux-*.toml} $(HOME)/.config/starship
+	cp ./build/{detect{distro,lang},*.toml} $(HOME)/.config/starship
+	@echo -e "\nDone. Don't forget to edit your shell's rc script and set the STARSHIP_CONFIG variable to\n\n$(HOME)/.config/starship/fast.toml\n\nor\n\n$(HOME)/.config/starship/std.toml."

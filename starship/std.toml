@@ -1,16 +1,9 @@
-## MacOS Configuration, Standard
-# Why does the OS symbols on these versions not disappear like the Linux version when there is a language
-# file in the cwd?
-# > The "OS symbol disappearing" is controlled by the "detectlang" binary.
-#   Since I do not have a Windows/MacOS machine to test the built binaries for these OSes I cannot distribute them.
-##
-
 add_newline = false
 command_timeout = 3000
 
 format = """
 [ ](bg:#7ECA9C fg:#1E222A)\
-${custom.macos}\
+${custom.linux}\
 $c\
 $cmake\
 $crystal\
@@ -29,12 +22,12 @@ $perl\
 $nim\
 $rust\
 $ruby\
-[](bg:#1E222A fg:#6FD08B)\
+[{!CHAR_DIVIDER!}](bg:#1E222A fg:#6FD08B)\
 $git_branch\
 $git_status\
 $directory\
 $status\
-[ ](fg:#1E222A)\
+[{!CHAR_DIVIDER!} ](fg:#1E222A)\
 """
 
 [directory]
@@ -55,13 +48,18 @@ truncation_symbol = " "
 "Templates" = ""
 ".config" = ""
 ".cache" = ""
-"~" = ""
+"~" = ""
 
-[custom.macos]
-os = "macos"
-symbol = " "
+[custom.linux]
+os = 'linux'
+when = """
+$HOME/.config/starship/detectlang no
+"""
+command = """
+$HOME/.config/starship/detectdistro
+"""
 style = "bg:#7ECA9C fg:#1E222A"
-format = "[$symbol]($style)"
+format = "[$output ]($style)"
 
 [cmd_duration]
 style = "bg:#CAAA6A fg:#1E222A"
@@ -106,16 +104,16 @@ symbol = " "
 style = "bg:#61afef fg:#1E222A"
 format = """
 [ ](bg:#1E222A fg:#ABB2BF)\
-[](bg:#61afef fg:#1E222A)\
-[ $symbol$branch ]($style)\
-[ ](bg:#668ee3 fg:#61afef)\
+[{!CHAR_DIVIDER!}](bg:#61afef fg:#1E222A)\
+[  $symbol$branch ]($style)\
+[{!CHAR_DIVIDER!} ](bg:#668ee3 fg:#61afef)\
 """
 
 [git_status]
 style = "bg:#668ee3 fg:#1E222A"
 format = """
 [$all_status$ahead_behind]($style)\
-[](bg:#1E222A fg:#668ee3)\
+[](bg:#1E222A fg:#668ee3)\
 """
 modified = " "
 conflicted = " "
