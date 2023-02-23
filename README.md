@@ -5,7 +5,17 @@
 
 ## Preview
 
-![Powerline Version](https://i.imgur.com/EPSpWOw.png)
+### Distro detection and some operations
+
+![Distro logos and some operations](preview/1.png)
+
+### Special directory substitutions and Git folder preview
+
+![Some special directory substitutions and git preview](preview/2.png)
+
+### Source files detection
+
+![Language detection preview](preview/3.png)
 
 ## Requirements
 

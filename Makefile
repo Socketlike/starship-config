@@ -3,13 +3,13 @@ SHELL = /bin/bash
 CXX = clang++
 CXXFLAGS = -O2 -std=c++17
 
-DETECTLANG_SRC = ./src/detectlang.cpp ./src/config.h
-DETECTDISTRO_SRC = ./src/detectdistro.cpp ./src/popen.h
+DETECTLANG_SRC = ./src/detectlang.cpp ./src/config.hpp
+DETECTDISTRO_SRC = ./src/detectdistro.cpp ./src/popen.hpp
 
 all: builddir detectlang detectdistro
 
 builddir:
-	mkdir -p ./build
+	if [[ ! -d "./build" ]]; then if [[ -e "./build" ]]; then rm ./build; fi; mkdir -p ./build; fi
 detectlang: builddir $(DETECTLANG_SRC)
 	$(CXX) $(CXXFLAGS) src/detectlang.cpp -o build/detectlang
 detectdistro: builddir $(DETECTDISTRO_SRC)
