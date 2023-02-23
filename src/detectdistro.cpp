@@ -48,7 +48,7 @@ int main()
     else if (res == string("nixos"))
       cout << " ";
     else
-      cout << " ";
+      cout << " ";
 
   } else {
     return 1;
