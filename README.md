@@ -58,7 +58,7 @@ eval "$(starship init bash)"
 with
 
 ```bash
-if [ -n "$DISPLAY" ]; then
-eval "$(starship init bash)"
+if [ -n "$DISPLAY" ] || [ -n "$WAYLAND_DISPLAY" ]; then
+  eval "$(starship init bash)"
 fi
 ```
