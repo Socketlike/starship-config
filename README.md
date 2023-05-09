@@ -3,7 +3,7 @@
   <h4 align="center">🎨 My <a href="https://starship.rs">Starship</a> config</h4>
 </center>
 
-## Preview
+## Preview (OUTDATED)
 
 ### Distro detection and some operations
 
