@@ -15,39 +15,36 @@ std::string getDistroName()
   std::string line;
   std::string distroName = "";
 
-  std::array<std::ifstream, 2> files = {
-    std::ifstream("/etc/os-release"),
-    std::ifstream("/etc/issue"),
-  };
+  std::smatch matches;
 
-  if (files.at(0).is_open()) {
-    while (std::getline(files.at(0), line))
-      if (std::regex_match(line, regex("^ID=.*")))
-        distroName = line;
-  } else if (files.at(1).is_open()) {
-    std::smatch matches;
+  std::ifstream osrelease ("/etc/os-release");
+  std::ifstream issue ("/etc/issue");
 
-    while (std::getline(files.at(1), line)) {
+  if (osrelease.is_open()) {
+    while (std::getline(osrelease, line))
+      if (std::regex_search(line, matches, regex("^ID=([a-zA-Z0-9_]+)")))
+        distroName = matches[1];
+  
+  } else if (issue.is_open()) {
+    while (std::getline(issue, line)) {
       std::string lowered = toLower(line);
       cout << lowered;
-      std::regex_search(lowered, matches, regex("([a-z0-9_.])+.*"));
-      if (matches.length() > 0)
-        distroName = matches[0];
+      if (std::regex_search(lowered, matches, regex("([a-z0-9_.])+.*")))
+        distroName = matches[1];
     } 
   }
 
-  for (std::ifstream *file = files.begin(); file != files.end(); ++file)
-    (*file).close();
+  if (osrelease.is_open()) osrelease.close();
+  if (issue.is_open()) issue.close();
 
   return distroName;
 };
 
 std::string convertToSymbol(std::string distroName)
 {
-  for (struct Distro d : distros) {
+  for (struct Distro d : distros)
     if (std::regex_match(distroName, d.name))
       return d.symbol;
-  }
 
   return distros[distros.size() - 1].symbol;
 }
