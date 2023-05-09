@@ -2,7 +2,7 @@ add_newline = false
 command_timeout = 3000
 
 format = """
-[{!CHAR_DIVIDER_ALT!}](fg:#6FD08B)\
+[{!CHAR_DIVIDER_ALT!}](fg:#282C34)\
 ${custom.linux}\
 $c\
 $custom.cpp\
@@ -24,35 +24,39 @@ $nim\
 $rust\
 $ruby\
 $zig\
-[{!CHAR_DIVIDER!}](bg:#1E222A fg:#6FD08B)\
-$git_branch\
-$git_status\
+[{!CHAR_DIVIDER!}](fg:#282C34)\
+( $git_branch)\
+( $git_status)\
+[ {!CHAR_DIVIDER_ALT!}](fg:#282C34)\
 $directory\
-$status\
-[{!CHAR_DIVIDER!} ](fg:#1E222A)\
+[( $status)](bg:#282C34)\
+[{!CHAR_DIVIDER!} ](fg:#282C34)
+[[ ](){!CHAR_DIVIDER_ALT!}](fg:#282C34)\
+[](bg:#282C34 fg:#E06C75)[](bg:#282C34 fg:#E5C07B)[](bg:#282C34 fg:#98C379)\
+[{!CHAR_DIVIDER!}](fg:#282C34) \
 """
 
 [directory]
-style = "bg:#1E222A fg:#ABB2BF"
-format = "[ $path ]($style)[$read_only]($read_only_style)"
+style = "bg:#282C34 fg:#ABB2BF"
+format = "[$path]($style)[( $read_only)]($read_only_style)"
 read_only = ""
-read_only_style = "bg:#1E222A fg:#E06C75"
+read_only_style = "bg:#282C34 fg:#E06C75"
 truncation_length = 2
 truncation_symbol = " "
 
 [directory.substitutions]
-"Documents" = ""
-"Downloads" = ""
-"Music" = ""
-"Pictures" = ""
-"Trash" = ""
-"Desktop" = ""
-"Videos" = ""
-"Templates" = ""
-".config" = ""
-".cache" = ""
-"home" = ""
-"~" = ""
+"Documents" = " "
+"Downloads" = " "
+"Music" = " "
+"Pictures" = " "
+"Trash" = " "
+"Desktop" = " "
+"Videos" = " "
+"Templates" = " "
+".config" = " "
+".cache" = " "
+"home" = " "
+"~" = " "
 
 [custom.linux]
 os = 'linux'
@@ -62,68 +66,65 @@ $HOME/.config/starship/detectlang no
 command = """
 $HOME/.config/starship/detectdistro
 """
-style = "bg:#7ECA9C fg:#1E222A"
+style = "bg:#282C34 fg:#98C379"
 format = "[$output ]($style)"
-
-[cmd_duration]
-style = "bg:#CAAA6A fg:#1E222A"
 
 [c]
 symbol = " "
-style = "bg:#7ECA9C fg:#1E222A"
+style = "bg:#282C34 fg:#98C379"
 format = "[$symbol]($style)"
 
 [custom.cpp]
 symbol = " "
-style = "bg:#7ECA9C fg:#1E222A"
+style = "bg:#282C34 fg:#98C379"
 format = "[$symbol]($style)"
 detect_extensions = ["cpp", "hpp"]
 
 [cmake]
 symbol = " "
-style = "bg:#7ECA9C fg:#1E222A"
+style = "bg:#282C34 fg:#98C379"
 format = "[$symbol]($style)"
 
 [crystal]
 symbol = " "
-style = "bg:#7ECA9C fg:#1E222A"
+style = "bg:#282C34 fg:#98C379"
 format = "[$symbol]($style)"
 
 [dart]
 symbol = " "
-style = "bg:#7ECA9C fg:#1E222A"
+style = "bg:#282C34 fg:#98C379"
 format = "[$symbol]($style)"
 
 [dotnet]
 symbol = " "
-style = "bg:#7ECA9C fg:#1E222A"
+style = "bg:#282C34 fg:#98C379"
 format = "[$symbol]($style)"
 
 [elixir]
 symbol = " "
-style = "bg:#7ECA9C fg:#1E222A"
+style = "bg:#282C34 fg:#98C379"
 format = "[$symbol]($style)"
 
 [elm]
 symbol = " "
-style = "bg:#7ECA9C fg:#1E222A"
+style = "bg:#282C34 fg:#98C379"
 format = "[$symbol]($style)"
 
 [git_branch]
 symbol = " "
-style = "bg:#61afef fg:#1E222A"
+style = "bg:#282C34 fg:#61AFEF"
 format = """
-[ ](bg:#1E222A fg:#ABB2BF)\
-[{!CHAR_DIVIDER!}](bg:#61afef fg:#1E222A)\
-[  $symbol$branch ]($style)\
-[{!CHAR_DIVIDER!} ](bg:#668ee3 fg:#61afef)\
+[{!CHAR_DIVIDER_ALT!}](fg:#282C34)\
+[$symbol( $branch)]($style)\
+[{!CHAR_DIVIDER!}](fg:#282C34)\
 """
 
 [git_status]
 style = "bg:#668ee3 fg:#1E222A"
 format = """
+[{!CHAR_DIVIDER_ALT!}](fg:#282C34)\
 [$all_status$ahead_behind]($style)\
-[{!CHAR_DIVIDER!}](bg:#1E222A fg:#668ee3)\
+[{!CHAR_DIVIDER!}](fg:#282C34)\
 """
 modified = " "
 conflicted = " "
@@ -139,77 +140,77 @@ staged = " "
 
 [golang]
 symbol = " "
-style = "bg:#7ECA9C fg:#1E222A"
+style = "bg:#282C34 fg:#98C379"
 format = "[$symbol]($style)"
 
 [haskell]
 symbol = " "
-style = "bg:#7ECA9C fg:#1E222A"
+style = "bg:#282C34 fg:#98C379"
 format = "[$symbol]($style)"
 
 [java]
 symbol = " "
-style = "bg:#7ECA9C fg:#1E222A"
+style = "bg:#282C34 fg:#98C379"
 format = "[$symbol]($style)"
 
 [julia]
 symbol = " "
-style = "bg:#7ECA9C fg:#1E222A"
+style = "bg:#282C34 fg:#98C379"
 format = "[$symbol]($style)"
 
 [kotlin]
 symbol = " "
-style = "bg:#7ECA9C fg:#1E222A"
+style = "bg:#282C34 fg:#98C379"
 format = "[$symbol]($style)"
 
 [lua]
 symbol = " "
-style = "bg:#7ECA9C fg:#1E222A"
+style = "bg:#282C34 fg:#98C379"
 format = "[$symbol]($style)"
 
 [nodejs]
 symbol = " "
-style = "bg:#7ECA9C fg:#1E222A"
+style = "bg:#282C34 fg:#98C379"
 format = "[$symbol]($style)"
 
 [perl]
 symbol = " "
-style = "bg:#7ECA9C fg:#1E222A"
+style = "bg:#282C34 fg:#98C379"
 format = "[$symbol]($style)"
 
 [python]
 symbol = " "
-style = "bg:#7ECA9C fg:#1E222A"
+style = "bg:#282C34 fg:#98C379"
 format = "[$symbol]($style)"
 
 [nim]
 symbol = " "
-style = "bg:#7ECA9C fg:#1E222A"
+style = "bg:#282C34 fg:#98C379"
 format = "[$symbol]($style)"
 
 [rust]
 symbol = " "
-style = "bg:#7ECA9C fg:#1E222A"
+style = "bg:#282C34 fg:#98C379"
 format = "[$symbol]($style)"
 
 [ruby]
 symbol = " "
-style = "bg:#7ECA9C fg:#1E222A"
+style = "bg:#282C34 fg:#98C379"
 format = "[$symbol]($style)"
 
 [zig]
 symbol = " "
-style = "bg:#7ECA9C fg:#1E222A"
+style = "bg:#282C34 fg:#98C379"
 format = "[$symbol]($style)"
 
 [status]
 disabled = false
-style = "bg:#1E222A fg:#ABB2BF"
+style = "bg:#282C34 fg:#ABB2BF"
 format = "[$symbol]($style)"
-symbol = "[](bg:#1E222A fg:#E06C75) "
+symbol = "[ ](bg:#282C34 fg:#E06C75)"
 success_symbol = ""
-not_executable_symbol = "[](bg:#1E222A fg:#E06C75) "
-not_found_symbol = "[](bg:#1E222A fg:#CAAA6A) "
-sigint_symbol = "[](bg:#1E222A fg:#E06C75) "
-signal_symbol = "[](bg:#1E222A fg:#E06C75) "
+not_executable_symbol = "[ ](bg:#282C34 fg:#E06C75)"
+not_found_symbol = "[](bg:#282C34 fg:#CAAA6A)"
+sigint_symbol = "[ ](bg:#282C34 fg:#E06C75)"
+signal_symbol = "[ ](bg:#282C34 fg:#E06C75)"
 map_symbol = true
