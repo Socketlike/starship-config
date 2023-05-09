@@ -5,7 +5,7 @@ format = """
 [{!CHAR_DIVIDER_ALT!}](fg:#282C34)\
 ${custom.linux}\
 $c\
-$custom.cpp\
+${custom.cpp}\
 $cmake\
 $crystal\
 $dart\
@@ -169,7 +169,7 @@ style = "bg:#282C34 fg:#98C379"
 format = "[$symbol]($style)"
 
 [nodejs]
-symbol = " "
+symbol = "󰌞 "
 style = "bg:#282C34 fg:#98C379"
 format = "[$symbol]($style)"
 
