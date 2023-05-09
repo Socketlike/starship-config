@@ -1,30 +1,29 @@
 #include <iostream>
+#include <iterator>
 #include <regex>
 #include <string>
 #include <filesystem>
 #include "config.hpp"
-using std::regex_match, std::regex, std::string;
-namespace fs = std::filesystem;
 
-int extcheck(string name, string ext) {
-  if (regex_match(name, regex(".*\\." + ext + "$")))
+int extcheck(std::string name, std::string ext) {
+  if (std::regex_match(name, std::regex(".*\\." + ext + "$")))
     return 1;
   else return 0;
 }
 
-int streql(string string1, string string2) {
+int streql(std::string string1, std::string string2) {
   if (string1 == string2)
     return 1;
   else return 0;
 }
 
-string matchlang(string name, int isDir) {
+std::string matchlang(std::string name, int isDir) {
   int iterator = 0;
   struct Language *lang;
   for (struct Language l : languages) {
     if (isDir) {
       lang = &languages[iterator];
-      for (string dirname : l.dirmatch) {
+      for (std::string dirname : l.dirmatch) {
         if (streql(name, dirname)) {
           lang->count++;
           return l.name;
@@ -33,13 +32,13 @@ string matchlang(string name, int isDir) {
       iterator++;
     } else {
       lang = &languages[iterator];
-      for (string filename : l.filematch) {
+      for (std::string filename : l.filematch) {
         if (streql(name, filename)) {
           lang->count++;
           return l.name;
         }
       }
-      for (string extname : l.extmatch) {
+      for (std::string extname : l.extmatch) {
         if (extcheck(name, extname)) {
           lang->count++;
           return l.name;
@@ -52,11 +51,13 @@ string matchlang(string name, int isDir) {
 }
 
 void scanCwd() {
-  const fs::path cwd = fs::current_path();
-  for (auto const& ent : fs::directory_iterator(cwd)) {
-    if (!streql(ent.path().filename().string(), "..") && !streql(ent.path().filename().string(), "."))
-      matchlang(ent.path().filename().string(), ent.is_directory());
-  }
+  const std::filesystem::path cwd = std::filesystem::current_path();
+  const std::filesystem::directory_iterator iterator = std::filesystem::directory_iterator(cwd);
+
+  if (std::distance(iterator, {}) <= 1000)
+    for (auto const& ent : iterator)
+      if (!streql(ent.path().filename().string(), "..") && !streql(ent.path().filename().string(), "."))
+        matchlang(ent.path().filename().string(), ent.is_directory());
 }
 
 vector<int> getAvailables() {
@@ -71,27 +72,27 @@ vector<int> getAvailables() {
   return languageIds;
 }
 
-string what() {
+std::string what() {
   scanCwd();
   const vector<int> ids = getAvailables();
-  string parsed = "";
+  std::string parsed = "";
 
   if (ids.size() == 0)
     exit(1);
   else
     for (int i = 0; i < ids.size(); i++) {
       if (i > 0)
-        parsed = parsed + string(", ");
+        parsed = parsed + std::string(", ");
       parsed = parsed.append(languages[ids[i]].name);
     }
 
   return parsed;
 }
 
-string symbols() {
+std::string symbols() {
   scanCwd();
   const vector<int> ids = getAvailables();
-  string parsed = "";
+  std::string parsed = "";
 
   if (ids.size() == 0)
     exit(1);
@@ -123,7 +124,7 @@ void no() {
 
 int main(int argc, char* argv[]) {
   if (!argv[1] || streql(argv[1], "help")) {
-    cout << "Usage: " << string(argv[0]) << " [OPTION]\n\n";
+    cout << "Usage: " << std::string(argv[0]) << " [OPTION]\n\n";
     cout << "  what            shows the most dominant language in current working directory\n";
     cout << "  has             exits with 1 if no files found, otherwise 0\n";
     cout << "  no              exits with 0 if no files found, otherwise 1\n";
@@ -137,7 +138,7 @@ int main(int argc, char* argv[]) {
   } else if (streql(argv[1], "symbols")) {
     cout << symbols();
   } else {
-    cout << "Usage: " + string(argv[0]) + " [OPTION]\n\n";
+    cout << "Usage: " + std::string(argv[0]) + " [OPTION]\n\n";
     cout << "  what            shows the most dominant language in current working directory\n";
     cout << "  has             exits with 1 if no files found, otherwise 0\n";
     cout << "  no              exits with 0 if no files found, otherwise 1\n";

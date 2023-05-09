@@ -2,12 +2,14 @@ add_newline = false
 command_timeout = 3000
 
 format = """
-[ ](bg:#7ECA9C fg:#1E222A)\
+[{!CHAR_DIVIDER_ALT!}](fg:#1E222A)\
 ${custom.linux}\
 ${custom.language}\
-[{!CHAR_DIVIDER!}](bg:#1E222A fg:#6FD08B)\
+[{!CHAR_DIVIDER!}](fg:#1E222A)\
+[ ]()\
 $git_branch\
 $git_status\
+[ {!CHAR_DIVIDER_ALT!}](fg:#1E222A)\
 $directory\
 $status\
 [{!CHAR_DIVIDER!} ](fg:#1E222A)\
@@ -15,7 +17,7 @@ $status\
 
 [directory]
 style = "bg:#1E222A fg:#ABB2BF"
-format = "[ $path ]($style)[$read_only]($read_only_style)"
+format = "[$path]($style)[$read_only]($read_only_style)"
 read_only = ""
 read_only_style = "bg:#1E222A fg:#E06C75"
 truncation_length = 2
@@ -46,7 +48,7 @@ $HOME/.config/starship/detectlang no
 command = """
 $HOME/.config/starship/detectdistro
 """
-style = "bg:#7ECA9C fg:#1E222A"
+style = "bg:#1E222A fg:#7ECA9C"
 format = "[$output ]($style)"
 
 [custom.language]
@@ -61,19 +63,19 @@ format = "[$output ]($style)"
 
 [git_branch]
 symbol = " "
-style = "bg:#61afef fg:#1E222A"
+style = "bg:#1E222A fg:#61afef"
 format = """
-[ ](bg:#1E222A fg:#ABB2BF)\
-[{!CHAR_DIVIDER!}](bg:#61afef fg:#1E222A)\
-[  $symbol$branch ]($style)\
-[{!CHAR_DIVIDER!} ](bg:#668ee3 fg:#61afef)\
+[{!CHAR_DIVIDER_ALT!}](fg:#1E222A)\
+[$symbol$branch]($style)\
+[{!CHAR_DIVIDER!}](fg:#1E222A)\
 """
 
 [git_status]
-style = "bg:#668ee3 fg:#1E222A"
+style = "bg:#1E222A fg:#668ee3"
 format = """
+[ {!CHAR_DIVIDER_ALT!}](fg:#1E222A)\
 [$all_status$ahead_behind]($style)\
-[{!CHAR_DIVIDER!}](bg:#1E222A fg:#668ee3)\
+[{!CHAR_DIVIDER!}](fg:#1E222A)\
 """
 modified = " "
 conflicted = " "

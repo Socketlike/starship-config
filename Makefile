@@ -17,18 +17,28 @@ detectdistro: builddir $(DETECTDISTRO_SRC)
 curved: detectlang detectdistro
 	cp ./starship/*.toml ./build
 	sed -i 's/{!CHAR_DIVIDER!}//g' ./build/*.toml
+	sed -i 's/{!CHAR_DIVIDER_ALT!}//g' ./build/*.toml
 	mkdir -p $(HOME)/.config/starship
 	cp ./build/{detect{distro,lang},*.toml} $(HOME)/.config/starship
 	@echo -e "\nDone. Don't forget to edit your shell's rc script and set the STARSHIP_CONFIG variable to\n\n$(HOME)/.config/starship/fast.toml\n\nor\n\n$(HOME)/.config/starship/std.toml."
 powerline: detectlang detectdistro
 	cp ./starship/*.toml ./build
 	sed -i 's/{!CHAR_DIVIDER!}//g' ./build/*.toml
+	sed -i 's/{!CHAR_DIVIDER_ALT!}//g' ./build/*.toml
 	mkdir -p $(HOME)/.config/starship
 	cp ./build/{detect{distro,lang},*.toml} $(HOME)/.config/starship
 	@echo -e "\nDone. Don't forget to edit your shell's rc script and set the STARSHIP_CONFIG variable to\n\n$(HOME)/.config/starship/fast.toml\n\nor\n\n$(HOME)/.config/starship/std.toml."
 sharp: detectlang detectdistro
 	cp ./starship/*.toml ./build
 	sed -i 's/{!CHAR_DIVIDER!}//g' ./build/*.toml
+	sed -i 's/{!CHAR_DIVIDER_ALT!}//g' ./build/*.toml
+	mkdir -p $(HOME)/.config/starship
+	cp ./build/{detect{distro,lang},*.toml} $(HOME)/.config/starship
+	@echo -e "\nDone. Don't forget to edit your shell's rc script and set the STARSHIP_CONFIG variable to\n\n$(HOME)/.config/starship/fast.toml\n\nor\n\n$(HOME)/.config/starship/std.toml."
+curved_nbin:
+	cp ./starship/*.toml ./build
+	sed -i 's/{!CHAR_DIVIDER!}//g' ./build/*.toml
+	sed -i 's/{!CHAR_DIVIDER_ALT!}//g' ./build/*.toml
 	mkdir -p $(HOME)/.config/starship
 	cp ./build/{detect{distro,lang},*.toml} $(HOME)/.config/starship
 	@echo -e "\nDone. Don't forget to edit your shell's rc script and set the STARSHIP_CONFIG variable to\n\n$(HOME)/.config/starship/fast.toml\n\nor\n\n$(HOME)/.config/starship/std.toml."

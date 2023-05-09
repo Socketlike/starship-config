@@ -1,5 +1,6 @@
 #include <string>
 #include <vector>
+#include <regex>
 using namespace std;
 
 struct Language
@@ -10,6 +11,12 @@ struct Language
   vector<string> dirmatch;
   vector<string> filematch;
   vector<string> extmatch;
+};
+
+struct Distro
+{
+  regex name;
+  string symbol;
 };
 
 /** 
@@ -45,4 +52,23 @@ vector<struct Language> languages = {
   {"rust",    " ", 0,      {},                  {"Cargo.toml"},                                     {"rs"}},
   {"ruby",    " ", 0,      {},                  {"Gemfile", ".ruby-version"},                       {"rb"}},
   {"zig",     " ", 0,      {},                  {},                                                 {"zig"}}
+};
+
+/**
+ * Insert your custom distro matching here
+ */
+vector<struct Distro> distros = {
+  /* match            sym */
+  {regex("arch"),     " "},
+  {regex("manjaro"),  " "},
+  {regex("centos"),   " "},
+  {regex("fedora"),   " "},
+  {regex("rhel"),     " "},
+  {regex("ubuntu"),   " "},
+  {regex("mint"),     " "},
+  {regex("gentoo"),   " "},
+  {regex("debian"),   " "},
+  {regex("opensuse"), " "},
+  {regex("nixos"),    " "},
+  {regex(".*"),       " "},
 };
