@@ -38,7 +38,7 @@ format = "[ $path ]($style)[$read_only]($read_only_style)"
 read_only = ""
 read_only_style = "bg:#1E222A fg:#E06C75"
 truncation_length = 2
-truncation_symbol = ""
+truncation_symbol = " "
 
 [directory.substitutions]
 "Documents" = ""

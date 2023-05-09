@@ -52,12 +52,12 @@ std::string matchlang(std::string name, int isDir) {
 
 void scanCwd() {
   const std::filesystem::path cwd = std::filesystem::current_path();
-  const std::filesystem::directory_iterator iterator = std::filesystem::directory_iterator(cwd);
 
-  if (std::distance(iterator, {}) <= 1000)
-    for (auto const& ent : iterator)
+  if (std::distance(std::filesystem::directory_iterator(cwd), std::filesystem::directory_iterator()) <= 1000) {
+    for (auto const& ent : std::filesystem::directory_iterator(cwd))
       if (!streql(ent.path().filename().string(), "..") && !streql(ent.path().filename().string(), "."))
         matchlang(ent.path().filename().string(), ent.is_directory());
+  }
 }
 
 vector<int> getAvailables() {
