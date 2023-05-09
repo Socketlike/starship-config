@@ -4,7 +4,7 @@ CXX = clang++
 CXXFLAGS = -O2 -std=c++17
 
 DETECTLANG_SRC = ./src/detectlang.cpp ./src/config.hpp
-DETECTDISTRO_SRC = ./src/detectdistro.cpp ./src/popen.hpp
+DETECTDISTRO_SRC = ./src/detectdistro.cpp
 
 all: builddir detectlang detectdistro
 
