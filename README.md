@@ -3,20 +3,6 @@
   <h4 align="center">🎨 My <a href="https://starship.rs">Starship</a> config</h4>
 </center>
 
-## Preview (OUTDATED)
-
-### Distro detection and some operations
-
-![Distro logos and some operations](preview/1.png)
-
-### Special directory substitutions and Git folder preview
-
-![Some special directory substitutions and git preview](preview/2.png)
-
-### Source files detection
-
-![Language detection preview](preview/3.png)
-
 ## Requirements
 
 - [Any Nerd Font](https://www.nerdfonts.com/font-downloads) (I used JetBrains Mono Nerd Font for the screenshot)
