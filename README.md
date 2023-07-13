@@ -1,11 +1,11 @@
 <center>
   <h1 align="center">starship-config</h1>
-  <h4 align="center">🎨 My <a href="https://starship.rs">Starship</a> config</h4>
+  <h4 align="center">my <a href="https://starship.rs">Starship</a> config</h4>
 </center>
 
 ## Requirements
 
-- [Any Nerd Font](https://www.nerdfonts.com/font-downloads) (I used JetBrains Mono Nerd Font for the screenshot)
+- [Any Nerd Font](https://www.nerdfonts.com/font-downloads)
 - [Starship](https://starship.rs)
 
 ## Installation for Linux
